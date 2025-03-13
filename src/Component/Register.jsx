@@ -1,45 +1,67 @@
 import React, { useContext } from "react";
 import NavBar from "./NavBar";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast, ToastContainer, Slide } from "react-toastify";
 
-const Login = () => {
-  const { signIn } = useContext(AuthContext);
-
-  const navigate = useNavigate();
-  const handleLogin = (e) => {
+const setPlaceholder = (e) => {
+  e.target.email.value = "";
+  e.target.password.value = "";
+  e.target.photoURL.value = "";
+  e.target.name.value = "";
+};
+const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const naviGate = useNavigate();
+  const handleRegister = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    e.target.email.value = "";
-    e.target.password.value = "";
-    signIn(email, password)
+    // const name = e.target.name.value;
+    // const photoURL = e.target.photoURL.value;
+    setPlaceholder(e);
+    createUser(email, password)
       .then(() => {
-        navigate("/");
-      })
-      .catch(() => {
-        toast.error("Wrong Email or Password !", {
+        toast("Account Created Successfully!", {
           position: "top-right",
-          autoClose: 1000,
+          autoClose: 700,
           hideProgressBar: false,
           closeOnClick: false,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "colored",
+          theme: "light",
           transition: Slide,
         });
-      });
+        setTimeout(() => {
+          naviGate("/");
+        }, 1000);
+      })
+      .catch();
   };
-
   return (
-    <>
+    <div>
       <NavBar />
-      <h1 className="text-2xl text-center mt-5 mb-5">Login your Account</h1>
-      <form className="flex justify-center" onSubmit={handleLogin}>
+      <h1 className="text-2xl text-center mt-5 mb-5">Register your Account</h1>
+      <form className="flex justify-center" onSubmit={handleRegister}>
         <div className="card bg-base-100 w-full  md:w-1/3 shadow-2xl">
           <fieldset className="fieldset">
+            <label className="fieldset-label">Your Name</label>
+            <input
+              type="name"
+              className="input w-full"
+              placeholder="Name"
+              name="name"
+              required
+            />
+            <label className="fieldset-label">Photo URL </label>
+            <input
+              type="name"
+              className="input w-full"
+              placeholder="Photo URL"
+              name="photoURL"
+              required
+            />
             <label className="fieldset-label">Email</label>
             <input
               type="email"
@@ -56,17 +78,14 @@ const Login = () => {
               name="password"
               required
             />
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
-            <button className="btn btn-neutral mt-4">Login</button>
+            <button className="btn btn-neutral mt-4">Register</button>
           </fieldset>
           <p>
-            If you do not have a Account, Please{" "}
-            <Link to="/register">
+            Already have a Account? Please{" "}
+            <Link to="/login">
               {" "}
               <button className="text-blue-700 font-bold underline">
-                Sign Up.
+                Login.
               </button>
             </Link>{" "}
           </p>
@@ -74,7 +93,7 @@ const Login = () => {
       </form>
       <ToastContainer
         position="top-right"
-        autoClose={1000}
+        autoClose={700}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}
@@ -82,11 +101,11 @@ const Login = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored"
+        theme="light"
         transition={Slide}
       />
-    </>
+    </div>
   );
 };
 
-export default Login;
+export default Register;
