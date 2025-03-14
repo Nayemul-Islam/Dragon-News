@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import NavBar from "./NavBar";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast, ToastContainer, Slide } from "react-toastify";
+import { FaGoogle } from "react-icons/fa6";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -16,7 +19,7 @@ const Login = () => {
     e.target.password.value = "";
     signIn(email, password)
       .then(() => {
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         toast.error("Wrong Email or Password !", {
@@ -31,6 +34,13 @@ const Login = () => {
           transition: Slide,
         });
       });
+  };
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch();
   };
 
   return (
@@ -59,6 +69,13 @@ const Login = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
+            <button
+              className="btn btn-outline btn-secondary w-full mb-1"
+              onClick={handleGoogleLogin}
+            >
+              {" "}
+              <FaGoogle></FaGoogle> Login With Google
+            </button>
             <button className="btn btn-neutral mt-4">Login</button>
           </fieldset>
           <p>

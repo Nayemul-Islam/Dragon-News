@@ -9,27 +9,36 @@ import Login from "./Component/Login";
 import Register from "./Component/Register";
 import NavBar from "./Component/NavBar";
 import AuthProvider from "./Component/AuthProvider";
+import NewsDetail from "./Component/NewsDetail";
+import PrivateRoute from "./Component/PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
-      { path: "/",
-        element: <Home/>
+      {
+        path: "/",
+        element: <Home />,
+        loader: () => fetch("../public/news.json"),
+      },
+      {
+        path :"/news/:id",
+        element: <PrivateRoute><NewsDetail></NewsDetail></PrivateRoute> ,
+        loader: () => fetch("../public/news.json")
       },
       {
         path: "/login",
-        element: <Login/>
+        element: <Login />,
       },
       {
-        path:"/register",
-        element: <Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path:"/about",
-        element: <NavBar/>
-      }
+        path: "/about",
+        element: <NavBar />,
+      },
     ],
   },
 ]);
@@ -37,8 +46,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
-   
   </React.StrictMode>
 );
