@@ -63,6 +63,17 @@ Full article view with extended description, author info, and a source link. Enh
 👉 [Click here to visit Dragon News](https://dragon-news-auth-7b85e.web.app/)
 
 ---
+flowchart TD
+    A[User opens Home Page] --> B{Is User Authenticated?}
+    B -- No --> C[Browse Latest News]
+    B -- Yes --> D[Access Personalized Features]
+    C --> E[Select Category]
+    D --> E
+    E --> F[Fetch News from API]
+    F --> G[Display List of Articles]
+    G --> H[User selects an article]
+    H --> I[Show News Detail Page]
+
 
 ## ⚙️ Technologies Used
 
