@@ -1,9 +1,4 @@
 
-**# Dragon News
-
-![GitHub Repo size](https://img.shields.io/github/repo-size/yourusername/dragon-news)  
-![GitHub stars](https://img.shields.io/github/stars/yourusername/dragon-news?style=social)  
-![GitHub forks](https://img.shields.io/github/forks/yourusername/dragon-news?style=social)  
 
 Dragon News is a responsive web app delivering the latest news across multiple categories with a clean and user-friendly interface.
 
