@@ -1,9 +1,5 @@
 # Dragon News
 
-![GitHub Repo size](https://img.shields.io/github/repo-size/yourusername/dragon-news)  
-![GitHub stars](https://img.shields.io/github/stars/yourusername/dragon-news?style=social)  
-![GitHub forks](https://img.shields.io/github/forks/yourusername/dragon-news?style=social)  
-
 **Dragon News**  is a responsive and dynamic news platform that provides the latest headlines through an intuitive user interface. Developed with modern web technologies, it features user authentication, category-based filtering, real-time news updates, and detailed article previews. The project is built with scalability and an emphasis on delivering a seamless user experience.
 
 ---
@@ -63,16 +59,8 @@ Full article view with extended description, author info, and a source link. Enh
 👉 [Click here to visit Dragon News](https://dragon-news-auth-7b85e.web.app/)
 
 ---
-flowchart TD
-    A[User opens Home Page] --> B{Is User Authenticated?}
-    B -- No --> C[Browse Latest News]
-    B -- Yes --> D[Access Personalized Features]
-    C --> E[Select Category]
-    D --> E
-    E --> F[Fetch News from API]
-    F --> G[Display List of Articles]
-    G --> H[User selects an article]
-    H --> I[Show News Detail Page]
+### ✨ Flowchart
+![Flowchart](./screenshots/flow-diagram.png)  
 
 
 ## ⚙️ Technologies Used
