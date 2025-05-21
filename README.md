@@ -2,7 +2,6 @@
  
 **Dragon News**  is a responsive and dynamic news platform that provides the latest headlines through an intuitive user interface. Developed with modern web technologies, it features user authentication, category-based filtering, real-time news updates, and detailed article previews. The project is built with scalability and an emphasis on delivering a seamless user experience.
 
-<<<<<<< HEAD
 ---
 
 ## ✨ Features
@@ -50,8 +49,6 @@ Users can click on any news card to view the complete article. The detail page d
 ### 👨‍💻 Clean Codebase & Modular Structure  
 The project follows a modular folder structure for better maintainability. Components are reusable and well-organized, making it easy for future developers to navigate and scale the application.
 
->>>>>>> e05bb6b7d3c4751d88c6656c2f4bfce74d280dfa
----
 
 ## 📷 Screenshots
 
@@ -86,18 +83,10 @@ Full article view with extended description, author info, and a source link. Enh
 👉 [Click here to visit Dragon News](https://dragon-news-auth-7b85e.web.app/)
 
 ---
-<<<<<<< HEAD
-
-### ✨ Flowchart
-![Flowchart](./screenshots/flow-diagram.png)  
-
-
 =======
 ### ✨ Flowchart
 ![Flowchart](./screenshots/flow-diagram.png)  
 
-
->>>>>>> e05bb6b7d3c4751d88c6656c2f4bfce74d280dfa
 ## ⚙️ Technologies Used
 
 | Technology      | Purpose                             |
